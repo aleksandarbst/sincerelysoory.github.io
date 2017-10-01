@@ -62,15 +62,16 @@
 
     // if "urlRegex" matches but this doesn't, "http://" will be
     // prepended to the beginning of the query before redirecting.
-    protocolRegex: /^[a-zA-Z]+:\/\//i
+    protocolRegex: /^[a-zA-Z]+:\/\//i,
+
+    // the uri to the weather api
+    weatherApi: 'http://api.openweathermap.org/data/2.5/weather?id=727011&appid=832719dabc0aaac91c4a93c2a64e12d4&units=metric'
   };
 </script>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-
-<link rel="icon" href="https://puu.sh/qyxTV/2be161e01e.gif" sizes="16x16 32x32 48x48 150x150" type="image/vnd.microsoft.icon" />
 
 <title>~</title>
 
@@ -112,6 +113,10 @@
     letter-spacing: 6px;
   }
 
+  form {
+    position: relative;
+  }
+
   input,
   input:focus {
     box-sizing: border-box;
@@ -135,7 +140,7 @@
   }
 
   .search-input {
-    padding: 12px;
+    padding: 12px 60px 12px 12px;
     border-radius: 2px;
     font-size: 1.1rem;
   }
@@ -245,6 +250,15 @@
     opacity: 1;
   }
 
+  #js-weather-temp {
+    padding: 12px;
+    font-size: 1.1rem;
+    color: #0C0B0E;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
   @media (min-width: 850px) {
     .overlay {
       display: flex;
@@ -272,6 +286,7 @@
   <form id="js-search-form" autocomplete="off">
     <input id="js-search-input" class="search-input" type="text" autofocus>
     <ul id="js-search-suggestions" class="search-suggestions"></ul>
+    <span id="js-weather-temp"></span>
   </form>
 </main>
 
@@ -711,10 +726,50 @@
     }
   }
 
+  class Weather {
+    constructor() {
+      this.apiUri = CONFIG.weatherApi;
+
+      this.getTempCache();
+      if (this.temp !== null) {
+        this.displayResults();
+      }
+
+      this.getWeather();
+    }
+
+    getWeather() {
+      let request = new XMLHttpRequest();
+      request.open('GET', this.apiUri, true);
+
+      request.onload = () => {
+        let data = JSON.parse(request.response);
+        this.temp = data.main.temp;
+      };
+
+      request.send();
+    }
+
+    getTempCache() {
+      this.temp = window.localStorage.getItem('js-weather-temp');
+    }
+
+    setTempCache(value) {
+      window.localStorage.setItem('js-weather-temp', value);
+      this.temp = value;
+    }
+
+    displayResults() {
+      $.el('#js-weather-temp').innerHTML = this.temp + '°C';
+    }
+  }
+
   const clock = new Clock();
   const help = new Help();
   const history = new History();
   const aggregator = new Suggester([history]);
   const parser = new QueryParser();
   const form = new Form(help, history, aggregator, parser);
+  const weather = new Weather();
+
 </script>
