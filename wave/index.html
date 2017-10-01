@@ -744,7 +744,8 @@
 
       request.onload = () => {
         let data = JSON.parse(request.response);
-        this.temp = data.main.temp;
+        this.setTempCache(data.main.temp);
+        this.displayResults();
       };
 
       request.send();
