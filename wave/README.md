@@ -1,7 +1,7 @@
 # Wave
 
 A slight alteration to [@cadejscroggins](https://github.com/cadejscroggins/tilde)' functional and beautiful startpage, now in black.
-![Screenshot](SCREENSHOT.png?raw=true "Screenshot")
+![Preview](preview.png?raw=true "Preview")
 
 ## Usage
 
