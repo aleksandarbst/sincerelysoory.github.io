@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+*, *::before, *::after {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: lato,sans-serif;
+  color: #242428;
+  background-color: #ececee; }
+
+a, a:hover {
+  text-decoration: none; }
+
+svg {
+  fill: currentColor; }
+
+.svg-defs {
+  display: none; }
+
+aside, .secondary {
+  color: #94949e; }
+
+.dark-ui {
+  color: white; }
+  .dark-ui:not(.no-bgd) {
+    background-color: #242428; }
+  .dark-ui.glazed-bgd {
+    background-color: rgba(29, 29, 32, 0.97);
+    -webkit-backdrop-filter: saturate(1.5) blur(7px); }
+
+.graphic-bgd {
+  text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.5); }
+  .graphic-bgd .secondary {
+    color: rgba(36, 36, 40, 0.75); }
+  .graphic-bgd .dark-ui, .graphic-bgd.dark-ui, dark-ui .graphic-bgd {
+    text-shadow: 0px 0px 3px rgba(36, 36, 40, 0.5); }
+    .graphic-bgd .dark-ui .secondary, .graphic-bgd.dark-ui .secondary, dark-ui .graphic-bgd .secondary {
+      color: rgba(255, 255, 255, 0.5); }
+
+[data-tooltip-text]:not([data-tooltip-text=""]) {
+  position: relative; }
+  [data-tooltip-text]:not([data-tooltip-text=""])::after {
+    content: attr(data-tooltip-text);
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 1070;
+    padding: 8px 11px;
+    font-size: 18px;
+    line-height: 1em;
+    color: white;
+    text-shadow: 0px 0px 3px rgba(36, 36, 40, 0.5);
+    white-space: nowrap;
+    pointer-events: none;
+    background-color: rgba(19, 19, 21, 0.8);
+    border-radius: 3px;
+    opacity: 1;
+    transition: all 0.08s ease;
+    -webkit-backdrop-filter: blur(1px); }
+    .dark-ui [data-tooltip-text]:not([data-tooltip-text=""])::after {
+      color: #242428;
+      text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.5);
+      background-color: rgba(234, 234, 236, 0.8); }
+  [data-tooltip-text]:not([data-tooltip-text=""]):hover::after {
+    opacity: 1; }
+  [data-tooltip-text]:not([data-tooltip-text=""]):not([data-tooltip-instant]):hover::after {
+    transition-delay: 0.25s; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-on]::before {
+    opacity: 1;
+    transform: scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-on]::after {
+    opacity: 1;
+    transform: translateX(50%) scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])::before {
+    content: "";
+    box-sizing: content-box;
+    width: 0;
+    height: 0;
+    position: absolute;
+    transform: scale(0);
+    z-index: 1070;
+    color: rgba(19, 19, 21, 0.8);
+    opacity: 0;
+    transition: all .08s ease; }
+    .dark-ui [data-tooltip-text]:not([data-tooltip-text=""])::before {
+      color: rgba(234, 234, 236, 0.8); }
+  [data-tooltip-text]:not([data-tooltip-text=""]):hover::before {
+    transform: scale(1);
+    opacity: 1; }
+  [data-tooltip-text]:not([data-tooltip-text=""]):not([data-tooltip-instant]):hover::before {
+    transition-delay: 0.25s; }
+  [data-tooltip-text]:not([data-tooltip-text=""])::before {
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    top: -10px;
+    margin: 0 0 0 -7px;
+    border: 7px solid transparent;
+    border-top-color: currentColor;
+    border-bottom: none;
+    transform-origin: center top; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="bottom"]::before {
+    left: 50%;
+    right: auto;
+    bottom: -10px;
+    top: auto;
+    margin: 0 0 0 -7px;
+    border: 7px solid transparent;
+    border-bottom-color: currentColor;
+    border-top: none;
+    transform-origin: center bottom; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="top-right"]::before {
+    left: auto;
+    right: 0;
+    transform: translateX(50%); }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="top-right"]::after {
+    right: 0;
+    top: auto;
+    bottom: 100%;
+    margin: 0 0 10px -16px;
+    transform-origin: left bottom; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="top-right"]:hover::after {
+    transform: translateX(50%) scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="top"][data-tooltip-pos~="align-left"]::after {
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: 100%;
+    margin: 0 0 10px -16px;
+    transform: scale(0);
+    transform-origin: left bottom; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="top"][data-tooltip-pos~="align-left"]:hover::after {
+    transform: scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="top"][data-tooltip-pos~="align-right"]::after {
+    left: auto;
+    right: 50%;
+    top: auto;
+    bottom: 100%;
+    margin: 0 -16px 10px 0;
+    transform: scale(0);
+    transform-origin: right bottom; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="top"][data-tooltip-pos~="align-right"]:hover::after {
+    transform: scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])::after {
+    right: 50%;
+    left: auto;
+    top: auto;
+    bottom: 100%;
+    margin: 0 0 10px 0;
+    transform: translateX(50%) scale(0);
+    transform-origin: center bottom;
+    -webkit-backdrop-filter: none; }
+  [data-tooltip-text]:not([data-tooltip-text=""]):hover::after {
+    transform: translateX(50%) scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="bottom"][data-tooltip-pos~="align-left"]::after {
+    left: 50%;
+    right: auto;
+    top: 100%;
+    bottom: auto;
+    margin: 10px 0 0 -16px;
+    transform: scale(0);
+    transform-origin: left top; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="bottom"][data-tooltip-pos~="align-left"]:hover::after {
+    transform: scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="bottom"][data-tooltip-pos~="align-center"]::after, [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="bottom"]::after {
+    left: auto;
+    right: 50%;
+    top: 100%;
+    bottom: auto;
+    margin: 10px 0 0 0;
+    transform: translateX(50%) scale(0);
+    transform-origin: center top;
+    -webkit-backdrop-filter: none; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="bottom"][data-tooltip-pos~="align-center"]:hover::after, [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="bottom"]:hover::after {
+    transform: translateX(50%) scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="bottom"][data-tooltip-pos~="align-right"]::after {
+    left: auto;
+    right: 50%;
+    top: 100%;
+    bottom: auto;
+    margin: 10px -16px 0 0;
+    transform: scale(0);
+    transform-origin: right top; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="bottom"][data-tooltip-pos~="align-right"]:hover::after {
+    transform: scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="middle"][data-tooltip-pos~="align-left"]::after {
+    left: 100%;
+    right: auto;
+    top: calc(50% - 1em/2);
+    bottom: auto;
+    margin: -8px 0 0 10px;
+    transform: scale(0);
+    transform-origin: left center; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="middle"][data-tooltip-pos~="align-left"]:hover::after {
+    transform: scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="middle"][data-tooltip-pos~="align-left"]::before {
+    left: auto;
+    right: -10px;
+    top: 50%;
+    bottom: auto;
+    margin: -7px 0 0 0;
+    border: 7px solid transparent;
+    border-right-color: currentColor;
+    border-left: none;
+    transform-origin: right center; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="middle"][data-tooltip-pos~="align-right"]::after {
+    left: auto;
+    right: 100%;
+    top: calc(50% - 1em/2);
+    bottom: auto;
+    margin: -8px 10px 0 0;
+    transform: scale(0);
+    transform-origin: right center; }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="middle"][data-tooltip-pos~="align-right"]:hover::after {
+    transform: scale(1); }
+  [data-tooltip-text]:not([data-tooltip-text=""])[data-tooltip-pos~="middle"][data-tooltip-pos~="align-right"]::before {
+    left: -10px;
+    right: auto;
+    top: 50%;
+    bottom: auto;
+    margin: -7px 0 0 0;
+    border: 7px solid transparent;
+    border-left-color: currentColor;
+    border-right: none;
+    transform-origin: left center; }
+
+/*# sourceMappingURL=tooltip.css.map */

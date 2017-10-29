@@ -1,0 +1,477 @@
+// -- mui · Minimalist User Interface --
+// -- https://codepen.io/collection/ABpRqv/ --
+// -- Base & Variables --
+
+
+// Variables · Color
+
+$color-neutral-hue: 240;
+$color-neutral-saturation: 5%;
+
+$color-primary: hsl($color-neutral-hue,$color-neutral-saturation,15%);
+$color-primary-darkui: white;
+$color-secondary: hsl($color-neutral-hue,$color-neutral-saturation,60%); // Same for both light and dark ui
+$color-tertiary: hsl($color-neutral-hue,$color-neutral-saturation,75%);
+$color-tertiary-darkui: hsl($color-neutral-hue,$color-neutral-saturation,40%);
+
+$color-accent: hsl(185, 90%, 40%); //dark turquoise
+
+$color-bgd-default: hsl($color-neutral-hue,$color-neutral-saturation,93%);
+$color-bgd-default-darkui: $color-primary;
+
+$color-bgd-transparency: transparentize(lighten($color-bgd-default,3%),.03);
+$color-bgd-transparency-darkui: transparentize(darken($color-bgd-default-darkui,3%),.03);
+$color-bgd-alpha-adjust-translucency:.07;
+$color-bgd-translucency-blur:7px;
+$color-bgd-translucency-saturation:1.5;
+
+$color-bgd-emphasis: lighten($color-bgd-default,4%);
+$color-bgd-emphasis-darkui: hsla($color-neutral-hue,$color-neutral-saturation,2%,.5);
+
+$color-mask: white;
+$color-mask-darkui: darken($color-bgd-default-darkui,10%);
+
+
+// Variables · Other
+
+$layout-gap-default: 32px;
+$border-radius-default: 3px;
+
+$transition-time-default: .125s;
+
+
+// Fonts
+
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+
+// Mixins
+
+@mixin transitionDefault($scope:'all') {
+  transition: #{$scope} $transition-time-default ease-in-out;
+}
+
+@mixin bgdTransparency($color-unsupported) {
+  background-color:$color;
+  @supports (-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px)) {
+    background-color:rgba($color,alpha($color)-$color-bgd-alpha-adjust-translucency);
+    -webkit-backdrop-filter: saturate($color-bgd-translucency-saturation) blur($color-bgd-translucency-blur);
+  }
+}
+
+@mixin colorDarkui($property: '', $color: 'default') {
+  $color-defaults: (
+          '' : $color-primary-darkui,
+          'border' : $color-primary-darkui,
+          'background' : $color-bgd-default-darkui
+  );
+  $colors: (
+          'primary' : $color-primary-darkui,
+          'tertiary' : $color-tertiary-darkui,
+          'emphasis' : $color-bgd-emphasis-darkui,
+          'mask' : $color-mask-darkui
+  );
+  $color-darkui: $color-primary-darkui;
+  @if $color == 'default' {
+    $color-darkui: map-get($color-defaults, $property);
+  } @else {
+    $color-darkui: map-get($colors, $color);
+  }
+  @if $property == "color" {
+    $property: "";
+  }
+  @if $property != "" {
+    $property: $property + "-";
+  }
+
+  .dark-ui & {
+    #{$property}color: $color-darkui;
+  }
+
+}
+
+
+// Selectors
+
+*, *::before, *::after {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  font-family:lato,sans-serif;
+  color:$color-primary;
+  background-color:$color-bgd-default;
+}
+
+a, a:hover {
+  text-decoration:none;
+}
+
+svg {
+  fill:currentColor;
+}
+
+.svg-defs {
+  display:none;
+}
+
+aside, .secondary {
+  color:$color-secondary; // works for both light and dark ui
+}
+
+.dark-ui {
+  color:$color-primary-darkui;
+  &:not(.no-bgd) {
+    background-color:$color-bgd-default-darkui;
+  }
+  &.glazed-bgd {
+    background-color:$color-bgd-transparency-darkui;
+    -webkit-backdrop-filter: saturate(1.5) blur(7px);
+  }
+}
+
+.graphic-bgd {
+  text-shadow:0px 0px 3px transparentize($color-primary-darkui,.5);
+  .secondary {
+    color:transparentize($color-primary,.25)
+  }
+  .dark-ui, &.dark-ui, dark-ui & {
+    text-shadow:0px 0px 3px transparentize($color-primary,.5);
+    .secondary {
+      color:transparentize($color-primary-darkui,.5)
+    }
+  }
+}
+
+
+
+// strong {
+//   font-weight:700;
+// }
+
+
+
+// Toggle (shift to action kit)
+// psuedo classes avoided to allow tooltips on either label or children
+
+
+
+
+// -- mui · Minimalist User Interface --
+// -- Tooltip kit --
+//
+// -- https://codepen.io/collection/ABpRqv/ --
+
+
+// Notes:
+// Approach based on Semantic UI no JavaScript tooltip (https://semantic-ui.com/modules/popup.html#tooltip)
+// Key diferences / improvements:
+// - Supports transparency replacing overlapping rotated square pointer with non overlapping intersecting border element (with a slight backdrop blur for supported browsers in most configurations)
+// - More consistent (but also different) positioning of pointers - optimised for iconography
+// - More refined animations (tooltips always grow from pointer)
+// - Supports inverse UI mode via ancestor class (in this case .dark-ui)
+// - Default position can be modified by commenting relevant position modifier selectors
+
+// Earlier version with heavy commenting can be found here: https://codepen.io/scootman/pen/oeGZEP
+
+
+// Dependencies:
+// - https://codepen.io/scootman/pen/GMGNNL (mui · Base & Variables · scss)
+
+
+
+// TODO:
+// - make position mixin
+
+
+// Variables
+
+$tooltip-opacity: .8;
+$tooltip-color-bgd: hsla($color-neutral-hue,$color-neutral-saturation,8%,$tooltip-opacity);
+$tooltip-color-bgd-darkui: hsla($color-neutral-hue,$color-neutral-saturation,92%,$tooltip-opacity);
+
+$tooltip-pointer-offset: 3px;
+$tooltip-pointer-dim: 7px;
+$tooltip-box-offset: $tooltip-pointer-offset + $tooltip-pointer-dim;
+$tooltip-pointer-box-offset: 16px; // for left/right aligned tooltips;
+
+$tooltip-padding-y: 8px;
+$tooltip-padding-x: 11px;
+
+$tooltip-hover-delay:.25s;
+
+
+// Selectors
+
+[data-tooltip-text]:not([data-tooltip-text=""]) {
+  position:relative;
+
+  // Box element base declarations
+
+  &::after {
+    content:attr(data-tooltip-text);
+    position:absolute;
+    box-sizing:border-box;
+    z-index: 1070;
+    padding:$tooltip-padding-y $tooltip-padding-x;
+    font-size:18px;
+    line-height:1em;
+    color:$color-primary-darkui;
+    text-shadow:0px 0px 3px transparentize($color-primary,.5);
+    white-space:nowrap;
+    pointer-events: none;
+    background-color:$tooltip-color-bgd;
+    border-radius:$border-radius-default;
+    opacity:1; //temp
+    transition: all 0.08s ease;
+    -webkit-backdrop-filter: blur(1px); // only works for safari, but even then doesn't work so well for translate transformations (the center condition) and for the pointer using the border intersection method
+    .dark-ui & {
+      color:$color-primary;
+      text-shadow:0px 0px 3px transparentize($color-primary-darkui,.5);
+      background-color:$tooltip-color-bgd-darkui;
+    }
+  }
+
+  &:hover::after {
+    opacity:1;
+  }
+  &:not([data-tooltip-instant]):hover::after {
+    transition-delay:$tooltip-hover-delay;
+  }
+
+  &[data-tooltip-on]::before {
+    opacity:1;
+    transform: scale(1);
+  }
+
+  &[data-tooltip-on]::after {
+    opacity:1;
+    transform: translateX(50%) scale(1);
+  }
+
+  // Pointer element base declarations
+
+  &::before {
+    content:"";
+    box-sizing:content-box;
+    width:0;
+    height:0;
+    position:absolute;
+    transform: scale(0);
+    z-index: 1070;
+    color:$tooltip-color-bgd;
+    opacity:0;
+    transition: all .08s ease;
+    .dark-ui & {
+      color:$tooltip-color-bgd-darkui;
+    }
+  }
+
+  &:hover::before {
+    transform: scale(1);
+    opacity:1;
+
+  }
+  &:not([data-tooltip-instant]):hover::before {
+    transition-delay:$tooltip-hover-delay;
+  }
+
+
+  // Position modifiers
+  // Comment out one relevent containing selectors below for top / bottom default positions only
+
+  // &[data-tooltip-pos~="top"] {
+  &::before {
+    left:50%;
+    right:auto;
+    bottom:auto;
+    top:-$tooltip-box-offset;
+    margin:0 0 0 -#{$tooltip-pointer-dim};
+    border:$tooltip-pointer-dim solid transparent;
+    border-top-color:currentColor;
+    border-bottom:none;
+    transform-origin:center top;
+  }
+  // }
+
+  &[data-tooltip-pos~="bottom"] {
+    &::before {
+      left:50%;
+      right:auto;
+      bottom:-$tooltip-box-offset;
+      top:auto;
+      margin:0 0 0 -#{$tooltip-pointer-dim};
+      border:$tooltip-pointer-dim solid transparent;
+      border-bottom-color:currentColor;
+      border-top:none;
+      transform-origin:center bottom;
+    }
+  }
+
+  // Comment out one relevent containing selectors below for default position
+
+  &[data-tooltip-pos~="top-right"] {
+    &::before {
+      left: auto;
+      right: 0;
+      transform: translateX(50%);
+    }
+
+    &::after {
+      right:0;
+      top:auto;
+      bottom:100%;
+      margin: 0 0 $tooltip-box-offset -#{$tooltip-pointer-box-offset};
+      transform-origin:left bottom;
+    }
+    &:hover::after {
+      transform: translateX(50%) scale(1);
+    }
+  }
+
+  &[data-tooltip-pos~="top"][data-tooltip-pos~="align-left"] {
+    &::after {
+      left:50%;
+      right:auto;
+      top:auto;
+      bottom:100%;
+      margin: 0 0 $tooltip-box-offset -#{$tooltip-pointer-box-offset};
+      transform:scale(0);
+      transform-origin:left bottom;
+    }
+    &:hover::after {
+      transform:scale(1);
+    }
+  }
+
+  &[data-tooltip-pos~="top"][data-tooltip-pos~="align-right"] {
+    &::after {
+      left:auto;
+      right:50%;
+      top:auto;
+      bottom:100%;
+      margin:0 -#{$tooltip-pointer-box-offset} $tooltip-box-offset 0;
+      transform:scale(0);
+      transform-origin:right bottom;
+    }
+    &:hover::after {
+      transform:scale(1);
+    }
+  }
+
+  // &[data-tooltip-pos~="top"][data-tooltip-pos~="align-center"] {
+  &::after {
+    right:50%;
+    left:auto;
+    top:auto;
+    bottom:100%;
+    margin: 0 0 $tooltip-box-offset 0;
+    transform:translateX(50%) scale(0);
+    transform-origin:center bottom;
+    -webkit-backdrop-filter:none;
+  }
+  &:hover::after {
+    transform:translateX(50%) scale(1);
+  }
+  // }
+
+  &[data-tooltip-pos~="bottom"][data-tooltip-pos~="align-left"] {
+    &::after {
+      left:50%;
+      right:auto;
+      top:100%;
+      bottom:auto;
+      margin:$tooltip-box-offset 0 0 -#{$tooltip-pointer-box-offset};
+      transform:scale(0);
+      transform-origin:left top;
+    }
+    &:hover::after {
+      transform:scale(1);
+    }
+  }
+
+  &[data-tooltip-pos~="bottom"][data-tooltip-pos~="align-center"], &[data-tooltip-pos~="bottom"] {
+    &::after {
+      left:auto;
+      right:50%;
+      top:100%;
+      bottom:auto;
+      margin:$tooltip-box-offset 0 0 0;
+      transform:translateX(50%) scale(0);
+      transform-origin:center top;
+      -webkit-backdrop-filter:none;
+    }
+    &:hover::after {
+      transform:translateX(50%) scale(1);
+    }
+  }
+
+  &[data-tooltip-pos~="bottom"][data-tooltip-pos~="align-right"] {
+    &::after {
+      left:auto;
+      right:50%;
+      top:100%;
+      bottom:auto;
+      margin:$tooltip-box-offset -#{$tooltip-pointer-box-offset} 0 0;
+      transform:scale(0);
+      transform-origin:right top;
+    }
+    &:hover::after {
+      transform:scale(1);
+    }
+  }
+
+  &[data-tooltip-pos~="middle"][data-tooltip-pos~="align-left"] {
+    &::after {
+      left:100%;
+      right:auto;
+      top:calc(50% - 1em/2);
+      bottom:auto;
+      margin:-#{$tooltip-padding-y} 0 0 $tooltip-box-offset;
+      transform:scale(0);
+      transform-origin:left center;
+    }
+    &:hover::after {
+      transform:scale(1);
+    }
+    &::before {
+      left:auto;
+      right:-$tooltip-box-offset;
+      top:50%;
+      bottom:auto;
+      margin:-$tooltip-pointer-dim 0 0 0;
+      border:$tooltip-pointer-dim solid transparent;
+      border-right-color:currentColor;
+      border-left:none;
+      transform-origin:right center;
+    }
+  }
+
+  &[data-tooltip-pos~="middle"][data-tooltip-pos~="align-right"] {
+    &::after {
+      left:auto;
+      right:100%;
+      top:calc(50% - 1em/2);
+      bottom:auto;
+      margin:-#{$tooltip-padding-y} $tooltip-box-offset 0 0;
+      transform:scale(0);
+      transform-origin:right center;
+    }
+    &:hover::after {
+      transform:scale(1);
+    }
+    &::before {
+      left:-$tooltip-box-offset;
+      right:auto;
+      top:50%;
+      bottom:auto;
+      margin:-#{$tooltip-pointer-dim} 0 0 0;
+      border:$tooltip-pointer-dim solid transparent;
+      border-left-color:currentColor;
+      border-right:none;
+      transform-origin:left center;
+    }
+  }
+
+}
