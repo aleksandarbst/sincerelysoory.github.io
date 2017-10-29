@@ -1,6 +1,11 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 @import url('https://fonts.googleapis.com/css?family=Lato');
 body {
-    background-color: #161014;
+    background-color: #171014;
 }
 
 article {
@@ -21,10 +26,11 @@ article h1:after {
 }
 
 article p {
-    color: #C5ADB6;
+    color: #caacb6;
     font-size: 2rem;
+    font-weight: 800;
     letter-spacing: 1px;
-    margin: 0;
+    margin: 7;
 }
 
 article a {
@@ -37,7 +43,7 @@ article a {
 }
 
 .underlined:hover {
-    border-color: #aaa;
+    border-color: #523946;
 }
 
 .links {
@@ -51,7 +57,7 @@ article a {
 
 .links li a {
     margin: 15px;
-    color: #D9544F;
+    color: #ed4949;
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: 1px;
