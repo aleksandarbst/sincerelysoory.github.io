@@ -32,7 +32,7 @@ aside, .secondary {
   color: #94949e; }
 
 .dark-ui {
-  color: white; }
+  color: #ececee; }
   .dark-ui:not(.no-bgd) {
     background-color: #000; }
   .dark-ui.glazed-bgd {
@@ -58,7 +58,7 @@ aside, .secondary {
     padding: 8px 11px;
     font-size: 18px;
     line-height: 1em;
-    color: white;
+    color: #ececee;
     text-shadow: 0px 0px 3px rgba(36, 36, 40, 0.5);
     white-space: nowrap;
     pointer-events: none;
