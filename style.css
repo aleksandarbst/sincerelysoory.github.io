@@ -5,18 +5,16 @@
 }
 @import url('https://fonts.googleapis.com/css?family=Lato');
 body {
-    background-color: #171014;
+    background-color: #fff;
 }
 
 article {
-    margin-top: 13%;
-    margin-left: 10%;
+    margin: 10%;
     color: #333;
     font-family: 'Lato', sans-serif;
 }
 
 article h1 {
-    color: #EFEBED;
     margin: 0 0 2rem 0;
     font-size: 4rem;
 }
@@ -26,9 +24,8 @@ article h1:after {
 }
 
 article p {
-    color: #caacb6;
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 300;
     letter-spacing: 1px;
     margin: 7px 0;
     -webkit-font-smoothing: antialiased;
@@ -36,8 +33,13 @@ article p {
     text-rendering: optimizeLegibility;
 }
 
+article p.margin {
+    margin-bottom: 2rem;
+}
+
 article a {
     cursor: hand;
+    color: #333;
 }
 
 .underlined {
@@ -46,25 +48,27 @@ article a {
 }
 
 .underlined:hover {
-    color: #caacb6;
-    border-color: #ed4949;
+    border-color: #0f1fdc;
 }
 
 .links {
     margin: 55px 0 0 0;
     padding: 0;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .links li {
     display: inline-block;
+
 }
 
 .links li a {
     margin: 15px;
-    color: #ed4949;
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .links li a:after {
