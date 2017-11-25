@@ -1,25 +1,27 @@
 * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
 }
+
 @import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://rsms.me/inter/inter-ui.css');
+
 body {
-    background-color: #171014;
+    background-color: #fff;
+    margin: 5%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
 }
 
 article {
-    margin-top: 13%;
-    margin-left: 10%;
     color: #333;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Inter UI', sans-serif;
 }
 
 article h1 {
-    color: #EFEBED;
     margin: 0 0 2rem 0;
     font-size: 4rem;
 }
@@ -29,9 +31,8 @@ article h1:after {
 }
 
 article p {
-    color: #caacb6;
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 300;
     letter-spacing: 1px;
     margin: 7px 0;
     -webkit-font-smoothing: antialiased;
@@ -39,35 +40,47 @@ article p {
     text-rendering: optimizeLegibility;
 }
 
+article p.margin {
+    margin-bottom: 2rem;
+}
+
 article a {
     cursor: hand;
+    color: #333;
 }
 
 .underlined {
     transition: border-color 100ms;
-    border-bottom: 4px solid #523946;
+    border-bottom: 4px solid #333;
 }
 
 .underlined:hover {
-    color: #caacb6;
-    border-color: #ed4949;
+    border-color: #0FA0CE;
 }
 
 .links {
-    margin: 55px 0 0 0;
+    font-family: 'Lato';
     padding: 0;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .links li {
     display: inline-block;
+
 }
 
 .links li a {
     margin: 15px;
-    color: #ed4949;
     font-weight: 700;
     font-size: 1rem;
     letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.links li:last-of-type a {
+    margin-right: 0;
 }
 
 .links li a:after {
@@ -86,3 +99,11 @@ article a {
     display: inline-block;
 }
 
+.portfolio .row {
+    margin-bottom: 15px;
+}
+
+.portfolio .row > div {
+    height: 400px;
+    overflow: hidden;
+}

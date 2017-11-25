@@ -1,57 +1,53 @@
 <html>
 <head>
   <title>S</title>
-  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css"/>-->
+  <link rel="stylesheet" href="bootstrap-grid.min.css">
   <link rel="stylesheet" href="tooltip.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <article>
-    <h1 class="introduction"
-         data-tooltip-text="ayo, "
-        data-tooltip-instant
-        data-tooltip-pos="top-right"
-        data-tooltip-on
-    >
+    <div class="container">
+      <div class="row justify-content-end">
+        <ul class="links">
+          <li>
+            <a href="/">Projects</a>
+          </li>
+          <li>
+            <a href="/portfolio">Portfolio</a>
+          </li>
+          <li>
+            <a href="#">Social</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    <h1 class="introduction">
+        <!--data-tooltip-text="ayo, "-->
+        <!--data-tooltip-instant-->
+        <!--data-tooltip-pos="top-right"-->
+        <!--data-tooltip-on-->
       Hello, I'm Aleks
     </h1>
-    <p>I'm a junior UI & Media designer from Sofia, BG.</p>
-    <p>You can find me working with <a class="underlined">twitch broadcasters</a></p>
-    <p>or cooking up <a class="underlined">concepts</a> and <a class="underlined">mockups</a>.</p>
-    <ul class="links">
-      <li>
-        <a href="#"
-           data-tooltip-text="some text"
-           data-tooltip-instant
-        >LATEST WORK</a>
-      </li>
-      <li>
-        <a href="#"
-           data-tooltip-text="open .pdf in new tab"
-           data-tooltip-instant
-        >PORTFOLIO</a>
-      </li>
-      <li>
-        <a href="#"
-           data-tooltip-text="some text"
-           data-tooltip-instant
-        >SOCIAL</a>
-      </li>
-      <li>
-        <a href="#"
-           data-tooltip-text="soorynotato@icloud.com"
-           data-tooltip-instant
-        >CONTACT</a>
-      </li>
-    </ul>
+    <p>Upcoming graphic design student</p>
+    <p>with a passion for the creative world.</p>
+    <p>If not buried in dribble shots, I'll likely be</p>
+    <p>found working with <a href="" class="underlined">twitch.tv broadcasters</a></p>
+    <p class="margin">or tinkering with concepts and mockups.</p>
+
+    <p>Although I adore following the creative industry,</p>
+    <p>I'm thrilled to start my own journey.</p>
   </article>
+  </div>
 
 
   <script>
     // One emoji will be randomly selected and inserted into the .random-emoji tag.
-    var emojis = ['👏', '👋','🎃',];
+    var emojis = ['👏', '👋'];
 
-    document.querySelector('.introduction').setAttribute('data-tooltip-text', 'ayo, ' + emojis[Math.floor(Math.random() * emojis.length)])
+//    document.querySelector('.introduction').setAttribute('data-tooltip-text', 'ayo, ' + emojis[Math.floor(Math.random() * emojis.length)])
 
 
   </script>
