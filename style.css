@@ -56,10 +56,6 @@ article a {
     position: relative;
 }
 
-<<<<<<< HEAD
-.underlined:hover {
-    border-color: #ed4949;
-=======
 .underlined:before {
     content: '';
     position: absolute;
@@ -72,7 +68,6 @@ article a {
 
 .underlined:hover:before {
     background: #2e44ff;
->>>>>>> 616dd55a2f1de854cde086da218b6292747b5fb8
 }
 
 .links {
