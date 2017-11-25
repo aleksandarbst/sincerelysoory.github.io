@@ -11,6 +11,9 @@
 body {
     background-color: #fff;
     margin: 5%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
 }
 
 article {
