@@ -6,6 +6,7 @@
 }
 
 @import url('https://fonts.googleapis.com/css?family=Karla');
+@import url('//fonts.googleapis.com/css?family=Karla');
 @import url('https://rsms.me/inter/inter-ui.css');
 
 body {
@@ -31,11 +32,11 @@ article h1:after {
 }
 
 article p {
-    font-size: 1.39831rem;
+    font-size: 1.59831rem;
     font-weight: 300;
     color: #363135;
-    letter-spacing: 1px;
-    line-height: 1.6rem;
+    letter-spacing: 0.6px;
+    line-height: 1.8rem;
     margin: 7px 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
