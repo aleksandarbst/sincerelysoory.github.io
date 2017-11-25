@@ -5,25 +5,25 @@
     box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 @import url('https://rsms.me/inter/inter-ui.css');
 
 body {
-    background-color: #fff;
-    margin: 5%;
+    background-color: #fbfcfc;
+    margin: 10% ;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
 }
 
 article {
-    color: #333;
+    color: #000;
     font-family: 'Inter UI', sans-serif;
 }
 
 article h1 {
     margin: 0 0 2rem 0;
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 article h1:after {
@@ -31,9 +31,11 @@ article h1:after {
 }
 
 article p {
-    font-size: 2rem;
+    font-size: 1.39831rem;
     font-weight: 300;
+    color: #363135;
     letter-spacing: 1px;
+    line-height: 1.6rem;
     margin: 7px 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -46,7 +48,7 @@ article p.margin {
 
 article a {
     cursor: hand;
-    color: #333;
+    color: #363135;
 }
 
 .underlined {
@@ -55,11 +57,11 @@ article a {
 }
 
 .underlined:hover {
-    border-color: #0FA0CE;
+    border-color: #2e44ff;
 }
 
 .links {
-    font-family: 'Lato';
+    font-family: 'Quicksand' sans-serif;
     padding: 0;
     margin-bottom: 4rem;
     display: flex;
@@ -73,9 +75,9 @@ article a {
 
 .links li a {
     margin: 15px;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.6px;
     text-transform: uppercase;
 }
 
