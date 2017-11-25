@@ -1,17 +1,21 @@
 * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
 }
+
 @import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://rsms.me/inter/inter-ui.css');
+
 body {
     background-color: #fff;
+    margin: 5%;
 }
 
 article {
-    margin: 10%;
     color: #333;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Inter UI', sans-serif;
 }
 
 article h1 {
@@ -44,16 +48,17 @@ article a {
 
 .underlined {
     transition: border-color 100ms;
-    border-bottom: 4px solid #523946;
+    border-bottom: 4px solid #333;
 }
 
 .underlined:hover {
-    border-color: #0f1fdc;
+    border-color: #0FA0CE;
 }
 
 .links {
-    margin: 55px 0 0 0;
+    font-family: 'Lato';
     padding: 0;
+    margin-bottom: 4rem;
     display: flex;
     justify-content: flex-end;
 }
@@ -69,6 +74,10 @@ article a {
     font-size: 1rem;
     letter-spacing: 1px;
     text-transform: uppercase;
+}
+
+.links li:last-of-type a {
+    margin-right: 0;
 }
 
 .links li a:after {
@@ -87,3 +96,11 @@ article a {
     display: inline-block;
 }
 
+.portfolio .row {
+    margin-bottom: 15px;
+}
+
+.portfolio .row > div {
+    height: 400px;
+    overflow: hidden;
+}

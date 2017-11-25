@@ -1,26 +1,29 @@
 <html>
 <head>
   <title>S</title>
-  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css"/>-->
+  <link rel="stylesheet" href="bootstrap-grid.min.css">
   <link rel="stylesheet" href="tooltip.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <article>
-    <ul class="links">
-      <li>
-        <a href="#">Projects</a>
-      </li>
-      <li>
-        <a href="#">Portfolio</a>
-      </li>
-      <li>
-        <a href="#">Social</a>
-      </li>
-      <li>
-        <a href="#">Contact</a>
-      </li>
-    </ul>
+    <div class="container">
+      <div class="row justify-content-end">
+        <ul class="links">
+          <li>
+            <a href="/">Projects</a>
+          </li>
+          <li>
+            <a href="/portfolio">Portfolio</a>
+          </li>
+          <li>
+            <a href="#">Social</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
     <h1 class="introduction">
         <!--data-tooltip-text="ayo, "-->
         <!--data-tooltip-instant-->
@@ -37,13 +40,14 @@
     <p>Although I adore following the creative industry,</p>
     <p>I'm thrilled to start my own journey.</p>
   </article>
+  </div>
 
 
   <script>
     // One emoji will be randomly selected and inserted into the .random-emoji tag.
     var emojis = ['👏', '👋'];
 
-    document.querySelector('.introduction').setAttribute('data-tooltip-text', 'ayo, ' + emojis[Math.floor(Math.random() * emojis.length)])
+//    document.querySelector('.introduction').setAttribute('data-tooltip-text', 'ayo, ' + emojis[Math.floor(Math.random() * emojis.length)])
 
 
   </script>
