@@ -58,7 +58,7 @@ article a {
 }
 
 .underlined:hover {
-    border-color: #2e44ff;
+    border-color: #ed4949;
 }
 
 .links {
@@ -76,7 +76,7 @@ article a {
 
 .links li a {
     margin: 15px;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 12px;
     letter-spacing: 0.6px;
     text-transform: uppercase;
