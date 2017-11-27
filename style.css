@@ -62,7 +62,7 @@ article a {
     bottom: 0;
     height: 4px;
     width: 100%;
-    background: #333;
+    background: rgba(0, 0, 0, 0.2);;
     transition: background 100ms;
 }
 
