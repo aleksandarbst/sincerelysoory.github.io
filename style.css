@@ -68,7 +68,7 @@ article a {
 }
 
 .links {
-    font-family: "Karla", sans-serif;
+    font-family: "Roboto", Karla, sans-serif;
     padding: 0;
     margin-bottom: 4rem;
     display: flex;
