@@ -6,7 +6,7 @@
 }
 
 @import url('https://fonts.googleapis.com/css?family=Karla');
-@import url('//fonts.googleapis.com/css?family=Karla');
+
 @import url('https://rsms.me/inter/inter-ui.css');
 
 body {
@@ -18,7 +18,7 @@ body {
 }
 
 article {
-    color: #000;
+    color: #111;
     font-family: 'Inter UI', sans-serif;
 }
 
@@ -38,9 +38,6 @@ article p {
     letter-spacing: 0.6px;
     line-height: 1.8rem;
     margin: 7px 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
 }
 
 article p.margin {
@@ -71,7 +68,7 @@ article a {
 }
 
 .links {
-    font-family: 'Karla', sans-serif !important;
+    font-family: "Karla", sans-serif;
     padding: 0;
     margin-bottom: 4rem;
     display: flex;
