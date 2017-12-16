@@ -1,11 +1,14 @@
 <html>
+
 <head>
   <title>Home &#8211; Aleks B</title>
   <link rel="stylesheet" href="bootstrap-grid.min.css">
   <link rel="stylesheet" href="tooltip.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <canvas class="wave-xp"></canvas>
   <article>
     <div class="container">
       <div class="row justify-content-end">
@@ -40,14 +43,18 @@
   </article>
   </div>
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.1/dat.gui.min.js"></script>
+  <script src="waves.js"></script>
   <script>
     // One emoji will be randomly selected and inserted into the .random-emoji tag.
     var emojis = ['👏', '👋'];
 
-//    document.querySelector('.introduction').setAttribute('data-tooltip-text', 'ayo, ' + emojis[Math.floor(Math.random() * emojis.length)])
+    document.querySelector('.introduction').setAttribute('data-tooltip-text', 'ayo, ' + emojis[Math.floor(Math.random() * emojis.length)])
+    'use strict';
 
-
+    // Create context
   </script>
 </body>
+
 </html>

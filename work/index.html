@@ -1,28 +1,31 @@
 <html>
+
 <head>
   <title>Work &#8211; Aleks B</title>
   <link rel="stylesheet" href="/bootstrap-grid.min.css">
   <link rel="stylesheet" href="/tooltip.css">
   <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
+  <canvas class="wave-xp"></canvas>
   <article>
     <div class="container">
       <div class="row justify-content-end">
-      <ul class="links">
-        <li>
-          <a href="/">About</a>
-        </li>
-        <li>
-          <a href="/work">Work</a>
-        </li>
-        <li>
-          <a href="#">Social</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
-        </li>
-      </ul>
+        <ul class="links">
+          <li>
+            <a href="/">About</a>
+          </li>
+          <li>
+            <a href="/work">Work</a>
+          </li>
+          <li>
+            <a href="#">Social</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -34,7 +37,7 @@
           </div>
           <div class="col-8">
             <a href="https://medium.com/@soory/standing-out-a98b3423ce05">
-              <img src="/images/preview_banner_shaded.png" alt="">
+              <img src="/images/preview_banner_shaded.png" alt="" data-wave-color="#123456">
             </a>
           </div>
         </div>
@@ -48,19 +51,35 @@
           <div class="col-4">
             <img src="http://via.placeholder.com/400" alt="">
           </div>
-         </div>
+        </div>
       </div>
     </div>
   </article>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.1/dat.gui.min.js"></script>
+  <script src="waves.js"></script>
 
   <script>
-    // One emoji will be randomly selected and inserted into the .random-emoji tag.
-    var emojis = ['👏', '👋'];
+    var portfolioItems = document.querySelectorAll('.portfolio img')
+    for (var i = 0; i < portfolioItems.length; i++) {
+      var item = portfolioItems[i]
+      var attribute = item.attributes['data-wave-color']
+      var color
+      var originalColor = window.params.COLOR
 
-    //    document.querySelector('.introduction').setAttribute('data-tooltip-text', 'ayo, ' + emojis[Math.floor(Math.random() * emojis.length)])
+      if (attribute != null) {
+        color = attribute.nodeValue
+      }
 
-
+      item.addEventListener('pointerenter', function (event) {
+        if (color !== null) {
+          window.params.COLOR = color
+          updateWaveColor(color)
+        }
+      })
+    }
   </script>
 </body>
+
 </html>
