@@ -135,22 +135,6 @@ var render = function render() {
 
 TweenMax.ticker.addEventListener('tick', render);
 
-// GUI
-
-var gui = new dat.GUI();
-gui.add(params, 'AMPLITUDE_WAVES', 0, canvas.height);
-gui.add(params, 'AMPLITUDE_MIDDLE', 0, canvas.height * 0.6);
-gui.add(params, 'AMPLITUDE_SIDES', 0, canvas.height * 0.5);
-var changeColor = gui.addColor(params, 'COLOR');
-gui.add(params, 'NUMBER_WAVES', 0, 8).step(1);
-gui.add(params, 'NUMBER_CURVES', 1, 8).step(1);
-gui.add(params, 'SPEED', 0, 10);
-gui.add(params, 'OFFSET_WAVES', 0, 155);
-gui.add(params, 'OFFSET_CURVE');
-var reset = gui.add(params, 'RESET');
-
-changeColor.onChange(updateWaveColor);
-
 function updateWaveColor(colorValue) {
     rgb = hexToRgb(colorValue);
     gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
@@ -158,22 +142,38 @@ function updateWaveColor(colorValue) {
     gradient.addColorStop(1, 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', 1)');
 }
 
-reset.onChange(function (resetValue) {
+// GUI
 
-    params.AMPLITUDE_WAVES = canvas.height;
-    params.AMPLITUDE_MIDDLE = canvas.height / 3;
-    params.AMPLITUDE_SIDES = canvas.height / 2;
-    params.OFFSET_SPEED = 120;
-    params.SPEED = 3;
-    params.OFFSET_WAVES = 35;
-    params.NUMBER_WAVES = 3;
-    params.COLOR = '#032bac';
-    params.NUMBER_CURVES = 2;
-    params.OFFSET_CURVE = true;
-    params.RESET = false;
+// var gui = new dat.GUI();
+// gui.add(params, 'AMPLITUDE_WAVES', 0, canvas.height);
+// gui.add(params, 'AMPLITUDE_MIDDLE', 0, canvas.height * 0.6);
+// gui.add(params, 'AMPLITUDE_SIDES', 0, canvas.height * 0.5);
+// var changeColor = gui.addColor(params, 'COLOR');
+// gui.add(params, 'NUMBER_WAVES', 0, 8).step(1);
+// gui.add(params, 'NUMBER_CURVES', 1, 8).step(1);
+// gui.add(params, 'SPEED', 0, 10);
+// gui.add(params, 'OFFSET_WAVES', 0, 155);
+// gui.add(params, 'OFFSET_CURVE');
+// var reset = gui.add(params, 'RESET');
 
-    rgb = hexToRgb(params.COLOR);
-    gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-    gradient.addColorStop(0, 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', 0)');
-    gradient.addColorStop(1, 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', 1)');
-}); 1
+// changeColor.onChange(updateWaveColor);
+
+// reset.onChange(function (resetValue) {
+
+//     params.AMPLITUDE_WAVES = canvas.height;
+//     params.AMPLITUDE_MIDDLE = canvas.height / 3;
+//     params.AMPLITUDE_SIDES = canvas.height / 2;
+//     params.OFFSET_SPEED = 120;
+//     params.SPEED = 3;
+//     params.OFFSET_WAVES = 35;
+//     params.NUMBER_WAVES = 3;
+//     params.COLOR = '#032bac';
+//     params.NUMBER_CURVES = 2;
+//     params.OFFSET_CURVE = true;
+//     params.RESET = false;
+
+//     rgb = hexToRgb(params.COLOR);
+//     gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+//     gradient.addColorStop(0, 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', 0)');
+//     gradient.addColorStop(1, 'rgba(' + rgb.r + ', ' + rgb.g + ', ' + rgb.b + ', 1)');
+// }); 1
