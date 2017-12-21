@@ -23,9 +23,8 @@ body {
 }
 
 article {
-    color: #111;
     margin: 0 10% 10%;
-    color: #000;
+    color: #2a2734;
     font-family: 'Inter UI', sans-serif;
 }
 
@@ -71,7 +70,7 @@ article a {
 }
 
 .underlined:hover:before {
-    background: #2e44ff;
+    background: #e7d9d3;
 }
 
 .links {
@@ -139,14 +138,15 @@ article a {
     margin-bottom: .1rem;
     position: relative;
     right: 3px;
+    color: #2a2734;
 }
 .project .header small {
-    color: #aaa;
-    font-size: 1.1rem;
+    color: #bfbfbf;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 500;
     letter-spacing: 1px;
-    margin-bottom: 1rem;
+    margin-bottom: 5rem;
 }
 
 .project .module {
@@ -154,13 +154,14 @@ article a {
 }
 
 .project .button-medium {
-    background: #f5f5f5;
+    background: #f3f4f5;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .project h3 {
-    font-weight: normal;
+    font-weight: 600;
+    font-size: 0.9rem;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-top: 0;
@@ -171,10 +172,12 @@ article a {
 }
 
 .project .module .body p {
-    font-size: 1.1rem
+    font-size: 1.1rem;
+    width: 50%;
 }
 
 .project .image-list img {
+    margin-top: 40px;
     height: 250px;
     width: 100%;
 }
