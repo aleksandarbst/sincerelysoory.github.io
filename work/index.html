@@ -78,6 +78,10 @@
           updateWaveColor(color)
         }
       })
+      item.addEventListener('pointerleave', function (event) {
+        window.params.COLOR = originalColor
+        updateWaveColor(originalColor)
+      })
     }
   </script>
 </body>
