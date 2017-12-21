@@ -38,7 +38,7 @@ article h1:after {
     font-weight: normal;
 }
 
-article p {
+article .about p {
     font-size: 1.59831rem;
     font-weight: 300;
     color: #363135;
@@ -120,16 +120,16 @@ article a {
     overflow: hidden;
 }
 
-.project .title {
+.project .header {
     margin-bottom: 3rem;
 }
 
-.project .title h1 {
+.project .header h1 {
     margin-bottom: .1rem;
     position: relative;
     right: 3px;
 }
-.project .title small {
+.project .header small {
     color: #aaa;
     font-size: 1.1rem;
     text-transform: uppercase;
@@ -152,4 +152,62 @@ article a {
     font-weight: normal;
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin-top: 0;
+}
+
+.project .module .body {
+    margin-left: 2rem;
+}
+
+.project .module .body p {
+    font-size: 1.1rem
+}
+
+.project .image-list img {
+    height: 250px;
+    width: 100%;
+}
+
+.project .image-list small {
+    font-size: 1.1rem;
+}
+
+.project .color-list {
+    list-style: none;
+    padding: 0;
+    margin: 4rem 0 0;
+}
+.project .color-list li {
+    display: block;
+    float: left;
+}
+
+.project .color-list li:not(:last-of-type) {
+    margin-right: 4rem;
+}
+
+.project .color-list div {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.color-list .color-1 {
+    background: #caacb6;
+}
+
+.color-list .color-2 {
+    background: #caacb6;
+}
+
+.color-list .color-3 {
+    background: #caacb6;
+}
+
+.project .color-list small {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    color: #ccc;
 }
