@@ -120,6 +120,17 @@ article a {
     overflow: hidden;
 }
 
+.portfolio img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    transition: filter 300ms;
+}
+
+.portfolio img:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%); 
+}
+
 .project .header {
     margin-bottom: 3rem;
 }
