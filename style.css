@@ -31,7 +31,7 @@ article {
 
 article h1 {
     margin: 0 0 2rem 0;
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 article h1:after {
@@ -107,10 +107,6 @@ article a {
     margin-left: 0;
 }
 
-.links li a:hover {
-
-}
-
 .introduction {
     display: inline-block;
 }
@@ -122,4 +118,38 @@ article a {
 .portfolio .row > div {
     height: 400px;
     overflow: hidden;
+}
+
+.project .title {
+    margin-bottom: 3rem;
+}
+
+.project .title h1 {
+    margin-bottom: .1rem;
+    position: relative;
+    right: 3px;
+}
+.project .title small {
+    color: #aaa;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.project .module {
+    margin-bottom: 6rem;
+}
+
+.project .button-medium {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.project h3 {
+    font-weight: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
