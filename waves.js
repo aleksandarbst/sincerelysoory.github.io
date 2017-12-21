@@ -13,10 +13,10 @@ var params = {
     AMPLITUDE_MIDDLE: canvas.height / 3,
     AMPLITUDE_SIDES: canvas.height / 2,
     OFFSET_SPEED: 120,
-    SPEED: 3,
+    SPEED: 2,
     OFFSET_WAVES: 35,
-    NUMBER_WAVES: 3,
-    COLOR: '#ebb4ed',
+    NUMBER_WAVES: 2,
+    COLOR: '#e7d9d3',
     NUMBER_CURVES: 2,
     OFFSET_CURVE: true,
     RESET: false
