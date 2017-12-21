@@ -123,6 +123,7 @@ article a {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
     transition: filter 300ms;
+    border-radius: 25px;
 }
 
 .portfolio img:hover {
