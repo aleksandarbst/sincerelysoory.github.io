@@ -58,28 +58,28 @@
   <script src="../waves.js"></script>
 
   <script>
-    var portfolioItems = document.querySelectorAll('.portfolio img')
-    for (var i = 0; i < portfolioItems.length; i++) {
-      var item = portfolioItems[i]
-      var attribute = item.attributes['data-wave-color']
-      var color
-      var originalColor = window.params.COLOR
+    // var portfolioItems = document.querySelectorAll('.portfolio img')
+    // for (var i = 0; i < portfolioItems.length; i++) {
+    //   var item = portfolioItems[i]
+    //   var attribute = item.attributes['data-wave-color']
+    //   var color
+    //   var originalColor = window.params.COLOR
 
-      if (attribute != null) {
-        color = attribute.nodeValue
-      }
+    //   if (attribute != null) {
+    //     color = attribute.nodeValue
+    //   }
 
-      item.addEventListener('pointerenter', function (event) {
-        if (color !== null) {
-          window.params.COLOR = color
-          updateWaveColor(color)
-        }
-      })
-      item.addEventListener('pointerleave', function (event) {
-        window.params.COLOR = originalColor
-        updateWaveColor(originalColor)
-      })
-    }
+    //   item.addEventListener('pointerenter', function (event) {
+    //     if (color !== null) {
+    //       window.params.COLOR = color
+    //       updateWaveColor(color)
+    //     }
+    //   })
+    //   item.addEventListener('pointerleave', function (event) {
+    //     window.params.COLOR = originalColor
+    //     updateWaveColor(originalColor)
+    //   })
+    // }
   </script>
 </body>
 
