@@ -117,13 +117,14 @@ article a {
 .portfolio .row > div {
     height: 400px;
     overflow: hidden;
+    border-radius: 25px;
 }
 
 .portfolio img {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
     transition: filter 300ms;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 25px;
 }
 
 .portfolio img:hover {
