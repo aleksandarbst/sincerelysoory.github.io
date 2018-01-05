@@ -76,7 +76,7 @@ article a {
 .links {
     font-family: "Roboto", Karla, sans-serif;
     padding: 0;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
     display: flex;
     justify-content: flex-end;
 }
@@ -104,6 +104,33 @@ article a {
 
 .links li:first-of-type a {
     margin-left: 0;
+}
+
+.icon-row {
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-links li a {
+    font-size: 1.5rem;
+}
+
+.contact {
+    position: absolute;
+    top: 19px;
+    right: -1px;
+    transition: transform 200ms;
+    transform: translateX(0);
+}
+
+.contact.hidden {
+    transform: translateX(100%);
+}
+
+.contact-button {
+    background: #eee;
+    border-radius: 15px;
+    padding: 14px;
 }
 
 .introduction {
