@@ -1,8 +1,3 @@
-document.querySelector('#contact-toggle').addEventListener('click', function () {
-    var list = document.querySelector('.contact').classList
-    list.contains('hidden') ? list.remove('hidden') : list.add('hidden')
-})
-
 var canvas = document.querySelector('.wave-xp');
 var ctx = document.querySelector('.wave-xp').getContext('2d');
 canvas.width = window.innerWidth;
