@@ -9,9 +9,9 @@ var wavesOpacities = [0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1];
 // Set parameters
 var params = {
     AMPLITUDE_WAVES: canvas.height,
-    AMPLITUDE_MIDDLE: canvas.height / 3,
-    AMPLITUDE_SIDES: canvas.height / 2,
-    OFFSET_SPEED: 120,
+    AMPLITUDE_MIDDLE: canvas.height / 2,
+    AMPLITUDE_SIDES: canvas.height / 3,
+    OFFSET_SPEED: 150,
     SPEED: 2,
     OFFSET_WAVES: 35,
     NUMBER_WAVES: 2,
