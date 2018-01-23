@@ -113,6 +113,11 @@ article a {
 
 .icon-links li a {
     font-size: 1.3rem;
+    color: #495057;
+}
+
+.icon-links li a:hover {
+
     color: #9f9999;
 }
 
